@@ -1,0 +1,94 @@
+version: '3'
+services:
+  #node extension 
+  node:
+    image: node:14-alpine
+    build:
+      context: ./app
+      dockerfile: ../config/node.dockerfile
+    container_name: node
+    working_dir: /usr/src/app
+    volumes:
+      - ./app:/usr/src/app
+      - ./config/init-scripts/:/init-scripts/
+    entrypoint:
+      - /init-scripts/node_start.sh
+    depends_on:
+      - app
+    networks:
+      - app-network
+  #PHP Service
+  app:
+    build:
+      context: ./app
+      dockerfile: ../config/Dockerfile
+    image: digitalocean.com/php
+    container_name: app
+    restart: unless-stopped
+    tty: true
+    environment:
+      SERVICE_NAME: app
+      SERVICE_TAGS: dev
+    working_dir: /var/www
+    volumes:
+      - ./app:/var/www
+      - ./config/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    networks:
+      - app-network
+
+  #Nginx Service
+  webserver:
+    image: nginx:alpine
+    container_name: webserver
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./app:/var/www
+      - ./config/nginx/conf.d/:/etc/nginx/conf.d/
+    networks:
+      - app-network
+
+  #MySQL Service
+  db:
+    image: mysql:5.7.22
+    container_name: db
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: laravel
+      MYSQL_USERNAME: root
+      #Pass for login in mysql
+      MYSQL_ROOT_PASSWORD: Hoangdo@123
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - dbdata:/var/lib/mysql/
+      - ./config/mysql:/etc/mysql
+    networks:
+      - app-network
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    container_name: phpadmin
+    ports:
+      - 8098:80
+    environment:
+      - PMA_HOST:db
+    depends_on:
+      - db
+    networks:
+      - app-network
+
+#Docker Networks
+networks:
+  app-network:
+    driver: bridge
+#Volumes
+volumes:
+  dbdata:
+    driver: local
