@@ -1,6 +1,6 @@
 version: '3'
 services:
-  #node extension 
+  #Node service
   node:
     image: node:14-alpine
     build:

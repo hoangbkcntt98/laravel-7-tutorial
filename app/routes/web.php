@@ -18,6 +18,8 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Route::resource('links','LinkController');
-
+Route::resource('links','LinkController')->middleware('age',['only'=>['store']]);
+Route::get('error', function () {
+    return 'My Error';
+})->name('error');
 Route::get('/home', 'HomeController@index')->name('home');
