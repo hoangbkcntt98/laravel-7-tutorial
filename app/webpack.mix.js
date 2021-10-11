@@ -13,11 +13,19 @@ const mix = require('laravel-mix');
 
 mix.react('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
+    .sass('resources/sass/links/links.scss', 'public/css')
     .browserSync({
+        files: [
+            'app/**/*',
+            'public/**/*',
+            'resources/views/links/links.blade.php',
+            'resources/lang/**/*',
+            'routes/**/*'
+        ],
         proxy: {
             target: 'http://localhost/'
         },
         host: 'localhost',
         open: false,
         notify: false
-       })
+    })

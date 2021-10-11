@@ -13,3 +13,4 @@ require('./bootstrap');
  */
 
 require('./components/Example');
+import SideBar from './components/Sidebar';

@@ -2,7 +2,13 @@ FROM php:7.4-fpm-buster
 
 # Copy composer.lock and composer.json
 COPY composer.lock composer.json /var/www/
-
+# COPY package.json package-lock.json /var/www/
+# ENV HOME '/var/www'
+# RUN mkdir $HOME/npm-package && \
+#     touch $HOME/npm-package/package.json && \
+#     touch $HOME/npm-package/package-lock.json && \
+#     ln -s $HOME/npm-package/package.json $HOME/package.json && \
+#     ln -s $HOME/npm-package/package-lock.json $HOME/package-lock.json
 # Set working directory
 WORKDIR /var/www
 

@@ -1,9 +1,13 @@
 @extends('layouts.links')
 @section('title','All Links')
+@section('stylesheet')
+<link rel="stylesheet" href="{{mix('/css/app.css')}}">
+@endsection
 @section('content')
-     <h1>This is all links:</h1>
+    <div id="sidebar"></div>
+     {{-- <h1>This is all links:</h1>
     <div class="container">
-        {{-- <div id="example"></div> --}}
+        <h2>desune sukana nesfdas</h2>
         <div class="content">
             <div class="flex-center">
 
@@ -13,10 +17,9 @@
             </div>
         </div>
     </div>
-    <button><a href="/links/create">Create a Link</a></button>
+    <button><a href="/links/create">Create a Link</a></button> --}}
     <div id="example"></div>
-    <script src={{mix("/js/app.js")}}></script>
-    <script async type="text/javascript" src="//localhost:3000/browser-sync/browser-sync-client.js"></script> 
+   
     
 @endsection
 

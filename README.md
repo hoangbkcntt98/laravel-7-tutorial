@@ -5,6 +5,9 @@
     - Add the account to docker-user group
     - Docker Destop/Setting/Shared Devices/Apply 
     - Login with the account 
+    - If you want run npm inside app container please do the following step
+    - Importance!!! You need add full-controll permission for docker user which just have been created 
+    - Click Righ -> Sercurity -> add user and choice full-controll 
 + Step 1 :Create composer container
   - Create a localcomposer for creating a laravel app with composer
   - run in cmd :

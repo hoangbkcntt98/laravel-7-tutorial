@@ -2,9 +2,16 @@ import React, { Fragment, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 
 function Example() {
-    
+
     return (
-       <div>This is a react component 3</div>
+        <React.Fragment>
+            <div className="row">
+                <div className="col-sm-6 red">Hello</div>
+                <div className="col-sm-6">Hello 1</div>
+            </div>
+
+        </React.Fragment>
+
     );
 }
 

@@ -2,15 +2,15 @@ version: '3.5'
 services:
   # npm:
   #   image: node:14-alpine
+  #   build:
+  #     dockerfile: ../config/node.dockerfile
   #   container_name: npm
   #   volumes:
-  #     - ./app:/var/www/html
-    
-  #   working_dir: /var/www/html
+  #     - ./app:/var/www
+  #   working_dir: /var/www
   #   entrypoint: [ 'npm' ]
   #   networks:
   #     - app-network
-      
   # #PHP Service
   app:
     build:
@@ -27,6 +27,7 @@ services:
     volumes:
       - ./app:/var/www
       - ./config/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+      - ./app/npm-package:/var/www/npm-package
     ports:
       - 3000:3000
       - 3001:3001
