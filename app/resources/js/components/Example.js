@@ -1,6 +1,7 @@
+import { Button } from '@mui/material';
 import React, { Fragment, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-
+import MyDrawer from './MyDrawer';
 function Example() {
 
     return (
@@ -9,7 +10,8 @@ function Example() {
                 <div className="col-sm-6 red">Hello</div>
                 <div className="col-sm-6">Hello 1</div>
             </div>
-
+            <Button variant="contained">Hello </Button>
+            <MyDrawer></MyDrawer>
         </React.Fragment>
 
     );

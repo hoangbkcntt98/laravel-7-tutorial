@@ -15,10 +15,12 @@
   - run image which are just created
     - Linux :docker run -it --name localcomposer -d -v $(pwd):/var/www/html localcomposer:latest
     - Windows :docker run -it --name localcomposer -d -v ${pwd}:/var/www/html localcomposer:latest
+   
   - then, use composer for creating laravel app ( with name is "app")
     - exec to app and use composer for creating app 
       - docker run -it -v $(pwd):/var/www/html localcomposer bash
       - cd /var/www/html
+      - if you download from github -> cd app compose install 
       - composer create-project --prefer-dist laravel/laravel={version of laravel which you need} app
   - Now, our directory structure are
     + --app
@@ -33,6 +35,7 @@
   
     - localhost:8098
 + Step 3 : docker-compose up -d
+- create file .env 
 + Step 4 : run laravel mix( css node js)
     - config in webpack.mix.js
     - docker-compose exec app bash

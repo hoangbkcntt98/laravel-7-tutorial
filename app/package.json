@@ -11,9 +11,13 @@
     },
     "devDependencies": {
         "@babel/preset-react": "^7.0.0",
+        "@mui/icons-material": "^5.0.3",
+        "@mui/material": "^5.0.3",
         "add": "^2.0.6",
         "axios": "^0.19",
         "bootstrap": "^4.0.0",
+        "browser-sync": "^2.27.5",
+        "browser-sync-webpack-plugin": "^2.0.1",
         "cross-env": "^7.0",
         "jquery": "^3.2",
         "laravel-mix": "^5.0.1",
@@ -24,5 +28,9 @@
         "resolve-url-loader": "^3.1.0",
         "sass": "^1.15.2",
         "sass-loader": "^8.0.0"
+    },
+    "dependencies": {
+        "@emotion/react": "^11.4.1",
+        "@emotion/styled": "^11.3.0"
     }
 }
