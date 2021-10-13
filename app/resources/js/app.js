@@ -3,7 +3,6 @@
  * includes React and other helpers. It's a great starting point while
  * building robust, powerful web applications using React + Laravel.
  */
-
 require('./bootstrap');
 
 /**
@@ -12,4 +11,13 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-require('./components/Example');
+import React from 'react';
+import App from './components/App';
+import ReactRenderer from './utils/ReactRenderer';
+const components = [
+    {
+      name: "App",
+      component: <App />,
+    },
+  ]
+new ReactRenderer(components).renderAll()
