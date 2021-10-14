@@ -4,6 +4,6 @@
 <link rel="stylesheet" href="{{mix('/css/app.css')}}">
 @endsection
 @section('content')
-    <App></App>
+    <App test ="test"></App>
 @endsection
 

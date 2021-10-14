@@ -18,8 +18,12 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+
 Route::resource('links','LinkController')->middleware('age',['only'=>['store']]);
+Route::get('/home', function () {
+    return view('links.home');
+});
 Route::get('error', function () {
     return 'My Error';
 })->name('error');
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
